@@ -1,4 +1,4 @@
-package com.udemy.compras.graphql.entities;
+package com.udemy.compras.graphql.entities.inputs;
 
 import java.util.Objects;
 

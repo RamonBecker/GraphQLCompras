@@ -12,25 +12,25 @@ import java.util.List;
 @Service
 public class ClienteService {
     @Autowired
-    private ClienteRepository rep;
+    private ClienteRepository repository;
 
     public Cliente findById(Long id) {
-        return rep.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public List<Cliente> findAll() {
-        return rep.findAll();
+        return repository.findAll();
     }
 
     @Transactional
     public Cliente save(Cliente c) {
-        return rep.save(c);
+        return repository.save(c);
     }
 
     @Transactional
     public Boolean deleteById(Long id) {
-        if(rep.findById(id).isPresent()) {
-            rep.deleteById(id);
+        if(repository.findById(id).isPresent()) {
+            repository.deleteById(id);
             return true;
         }
         return false;

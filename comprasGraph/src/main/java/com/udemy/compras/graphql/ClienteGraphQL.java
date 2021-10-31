@@ -3,7 +3,7 @@ package com.udemy.compras.graphql;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.udemy.compras.graphql.entities.Cliente;
-import com.udemy.compras.graphql.entities.ClienteInput;
+import com.udemy.compras.graphql.entities.inputs.ClienteInput;
 import com.udemy.compras.graphql.service.ClienteService;
 
 import org.modelmapper.ModelMapper;
@@ -16,14 +16,14 @@ import java.util.List;
 public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
 	@Autowired
-	private ClienteService clienteService;
+	private ClienteService service;
 
 	public Cliente cliente(Long id) {
-		return clienteService.findById(id);
+		return service.findById(id);
 	}
 
 	public List<Cliente> clientes() {
-		return clienteService.findAll();
+		return service.findAll();
 	}
 
 	public Cliente saveCliente(ClienteInput input) {
@@ -34,10 +34,10 @@ public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 
 		ModelMapper m = new ModelMapper();
 		Cliente c = m.map(input, Cliente.class);
-		return clienteService.save(c);
+		return service.save(c);
 	}
 
 	public Boolean deleteCliente(Long id) {
-		return clienteService.deleteById(id);
+		return service.deleteById(id);
 	}
 }

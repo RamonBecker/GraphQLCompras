@@ -6,7 +6,7 @@ type Cliente{
 
 input ClienteInput{
 	id:ID!,
-	nome:String!
+	nome:String!,
 	email:String!
 }
 
