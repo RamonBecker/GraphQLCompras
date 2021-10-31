@@ -10,6 +10,6 @@ public class HelloController {
 
 	@GetMapping
 	public String hello() {
-		return "hello REST";
+		return "hello REST 3";
 	}
 }
