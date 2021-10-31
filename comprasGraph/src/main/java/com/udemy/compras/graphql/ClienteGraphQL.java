@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 @Component
 public class ClienteGraphQL implements GraphQLQueryResolver,GraphQLMutationResolver {
 
@@ -23,7 +25,8 @@ public class ClienteGraphQL implements GraphQLQueryResolver,GraphQLMutationResol
     public List<Cliente> clientes() {
         return clienteService.findAll();
     }
-
+    
+    @Transactional
     public Cliente saveCliente(Long id, String nome, String email) {
         Cliente c = new Cliente();
         c.setId(id);
