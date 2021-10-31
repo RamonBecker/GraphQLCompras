@@ -1,5 +1,9 @@
 package com.udemy.compras;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
@@ -18,5 +22,15 @@ public class QueryGraphQL implements GraphQLQueryResolver {
 
 	public Cliente cliente() {
 		return new Cliente("Maria", "Maria@gmail.com");
+	}
+
+	public List<Cliente> clientes() {
+		List<Cliente> list = new ArrayList<Cliente>();
+
+		for (int i = 0; i < 10; i++) {
+			list.add(new Cliente("Cliente " + i, "cliente"+i+"@gmail.com"));
+		}
+
+		return list;
 	}
 }
