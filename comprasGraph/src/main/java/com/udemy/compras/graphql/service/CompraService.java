@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class CompraService {
 
 	@Autowired
 	private CompraRepository repository;
+
 
 	public List<Compra> findAll(Pageable pageable) {
 		return repository.findAll(pageable).getContent();
@@ -45,6 +47,7 @@ public class CompraService {
 		return false;
 	}
 
+	 @Cacheable("comprasByCliente")
 	public List<Compra> findAllByCliente(Cliente c) {
 		return repository.findAllByCliente(c);
 	}

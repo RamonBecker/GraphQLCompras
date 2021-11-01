@@ -1,6 +1,7 @@
 package com.udemy.compras.graphql.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.udemy.compras.graphql.entities.Cliente;
@@ -18,6 +19,7 @@ public class ClienteService {
         return repository.findById(id).orElse(null);
     }
 
+    @Cacheable("clientes")
     public List<Cliente> findAll() {
         return repository.findAll();
     }
