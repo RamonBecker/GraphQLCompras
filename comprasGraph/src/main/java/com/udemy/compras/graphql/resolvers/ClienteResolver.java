@@ -20,7 +20,8 @@ public class ClienteResolver implements GraphQLResolver<Cliente> {
 		return compraService.findAllByCliente(c);
 	}
 
-	public List<Compra> compras(Cliente c, int quantidade) {
-		return compraService.findAllByClienteAndQuantidade(c, quantidade);
-	}
+	/*
+	 * public List<Compra> compras(Cliente c, int quantidade) { return
+	 * compraService.findAllByClienteAndQuantidade(c, quantidade); }
+	 */
 }

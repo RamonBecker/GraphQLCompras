@@ -4,7 +4,6 @@ type Cliente{
 	email:String!,
 	
 	compras:[Compra]!,
-	compras(quantidade:Int):[Compra]!
 }
 
 input ClienteInput{
