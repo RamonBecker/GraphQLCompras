@@ -5,9 +5,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
@@ -15,7 +14,6 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.udemy.compras.graphql.dto.CompraResumoDTO;
 import com.udemy.compras.graphql.entities.Compra;
 import com.udemy.compras.graphql.entities.inputs.CompraInput;
-import com.udemy.compras.graphql.resolvers.CompraResolver;
 import com.udemy.compras.graphql.service.ClienteService;
 import com.udemy.compras.graphql.service.CompraService;
 import com.udemy.compras.graphql.service.ProdutoService;
@@ -37,7 +35,7 @@ public class CompraGraphQL implements GraphQLQueryResolver, GraphQLMutationResol
 	}
 
 	public List<Compra> getCompras(int page, int size) {
-		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size);
+		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade").descending());
 		return service.findAll(pageable);
 	}
 
