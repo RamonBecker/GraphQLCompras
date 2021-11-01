@@ -3,6 +3,7 @@ package com.udemy.compras.graphql.entities;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Cacheable
 public class Compra {
 
 	@Id

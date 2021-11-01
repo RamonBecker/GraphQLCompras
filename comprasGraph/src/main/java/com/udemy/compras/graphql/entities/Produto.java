@@ -2,12 +2,14 @@ package com.udemy.compras.graphql.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Cacheable
 public class Produto {
 
 	@Id
