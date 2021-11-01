@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.udemy.compras.graphql.dto.CompraResumoDTO;
@@ -18,8 +20,8 @@ public class CompraService {
 	@Autowired
 	private CompraRepository repository;
 
-	public List<Compra> findAll() {
-		return repository.findAll();
+	public List<Compra> findAll(Pageable pageable) {
+		return repository.findAll(pageable).getContent();
 	}
 
 	public Compra findBydId(Long id) {

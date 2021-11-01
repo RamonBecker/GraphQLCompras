@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
@@ -33,8 +36,9 @@ public class CompraGraphQL implements GraphQLQueryResolver, GraphQLMutationResol
 		return service.findBydId(id);
 	}
 
-	public List<Compra> getCompras() {
-		return service.findAll();
+	public List<Compra> getCompras(int page, int size) {
+		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size);
+		return service.findAll(pageable);
 	}
 
 	public Compra saveCompra(CompraInput input) {
