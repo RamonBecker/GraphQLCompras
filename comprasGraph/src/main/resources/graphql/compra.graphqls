@@ -10,8 +10,8 @@ input CompraInput{
 	id: ID,
 	quantidade: Int!,
 	status: String!,
-	cliente: ID!,
-	produto: ID!
+	clienteId: ID!,
+	produtoId: ID!
 }
 
 extend type Query{
