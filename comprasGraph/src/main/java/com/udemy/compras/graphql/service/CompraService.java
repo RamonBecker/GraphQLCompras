@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.udemy.compras.graphql.dto.CompraResumoDTO;
 import com.udemy.compras.graphql.entities.Cliente;
 import com.udemy.compras.graphql.entities.Compra;
 import com.udemy.compras.graphql.repositories.CompraRepository;
@@ -41,6 +42,10 @@ public class CompraService {
 
 	public List<Compra> findAllByCliente(Cliente c) {
 		return repository.findAllByCliente(c);
+	}
+
+	public List<CompraResumoDTO> findAllComprasRelatorio() {
+		return repository.findAllComprasRelatorio();
 	}
 
 	/*

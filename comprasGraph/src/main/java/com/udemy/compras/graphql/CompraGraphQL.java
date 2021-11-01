@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.udemy.compras.graphql.dto.CompraResumoDTO;
 import com.udemy.compras.graphql.entities.Compra;
 import com.udemy.compras.graphql.entities.inputs.CompraInput;
+import com.udemy.compras.graphql.resolvers.CompraResolver;
 import com.udemy.compras.graphql.service.ClienteService;
 import com.udemy.compras.graphql.service.CompraService;
 import com.udemy.compras.graphql.service.ProdutoService;
@@ -49,5 +51,9 @@ public class CompraGraphQL implements GraphQLQueryResolver, GraphQLMutationResol
 
 	public Boolean deleteCompra(Long id) {
 		return service.deleteById(id);
+	}
+	
+	public List<CompraResumoDTO> getComprasRelatorio(){
+		return service.findAllComprasRelatorio();
 	}
 }
