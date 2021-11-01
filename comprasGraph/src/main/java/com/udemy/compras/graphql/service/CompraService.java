@@ -40,7 +40,10 @@ public class CompraService {
 	}
 
 	public List<Compra> findAllByCliente(Cliente c) {
-		
 		return repository.findAllByCliente(c);
+	}
+
+	public List<Compra> findAllByClienteAndQuantidade(Cliente c, int quantidade) {
+		return repository.findAllByClienteAndQuantidade(c, quantidade);
 	}
 }

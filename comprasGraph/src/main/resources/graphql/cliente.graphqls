@@ -3,7 +3,8 @@ type Cliente{
 	nome:String!,
 	email:String!,
 	
-	compras:[Compra]!
+	compras:[Compra]!,
+	compras(quantidade:Int):[Compra]!
 }
 
 input ClienteInput{

@@ -15,8 +15,12 @@ public class ClienteResolver implements GraphQLResolver<Cliente> {
 
 	@Autowired
 	private CompraService compraService;
-	
-	public List<Compra> compras(Cliente c){
+
+	public List<Compra> compras(Cliente c) {
 		return compraService.findAllByCliente(c);
+	}
+
+	public List<Compra> compras(Cliente c, int quantidade) {
+		return compraService.findAllByClienteAndQuantidade(c, quantidade);
 	}
 }
