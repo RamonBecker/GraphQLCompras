@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,6 @@ public class CompraService {
 	@Autowired
 	private CompraRepository repository;
 
-
 	public List<Compra> findAll(Pageable pageable) {
 		return repository.findAll(pageable).getContent();
 	}
@@ -31,8 +31,9 @@ public class CompraService {
 	}
 
 	@Transactional
+	@CacheEvict(value = "comprasByCliente", key = "#c.cliente.id")
 	public Compra save(Compra c) {
-		if(c.getQuantidade() > 100){
+		if (c.getQuantidade() > 100) {
 			throw new DomainException("Não é possível fazer uma compra com mais de 100 itens");
 		}
 		return repository.save(c);
@@ -47,7 +48,7 @@ public class CompraService {
 		return false;
 	}
 
-	 @Cacheable("comprasByCliente")
+	@Cacheable(value = "comprasByCliente", key = "#c.id")
 	public List<Compra> findAllByCliente(Cliente c) {
 		return repository.findAllByCliente(c);
 	}
