@@ -35,7 +35,7 @@ public class CompraGraphQL implements GraphQLQueryResolver, GraphQLMutationResol
 	}
 
 	public List<Compra> getCompras(int page, int size) {
-		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade").descending());
+		org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size, Sort.by("quantidade"));
 		return service.findAll(pageable);
 	}
 
